@@ -3,7 +3,7 @@ name: '【auto】Create git tag'
 on:
   pull_request:
     branches:
-      - main
+      - master
     types: [closed]
 
 jobs:
@@ -22,5 +22,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: ${{ ((contains(github.event.pull_request.head.ref, 'bugfix') || contains(github.event.pull_request.head.ref, 'hotfix')) && 'patch') || 'minor' }}
           WITH_V: true
-          RELEASE_BRANCHES: main
+          RELEASE_BRANCHES: master
           INITIAL_VERSION: v1.0.0
