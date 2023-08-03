@@ -17,6 +17,7 @@ jobs:
       
       - name: Get Latest Tag
         run: |
+          git fetch --tags --prune > /dev/null 2>&1
           git tag --list
         
       - name: Build and push excite-emininal-api Amazon ECR
