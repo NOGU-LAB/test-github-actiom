@@ -1,4 +1,4 @@
-name: '【auto】Create git tag'
+name: '【auto】Trigger git tag'
 
 on:
   create:
