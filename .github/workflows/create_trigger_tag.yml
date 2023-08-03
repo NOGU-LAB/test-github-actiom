@@ -1,14 +1,19 @@
 name: '【auto】Trigger git tag'
 
 on:
-  push:
-    tags:
-      - 'v*'
-      
+  workflow_run:
+    workflows: ["【auto】Create git tag"]
+    types: ["completed"]
+
 jobs:
-  build-and-push:
+  release:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
       - name: Build and push excite-emininal-api Amazon ECR
         run: |
           echo "実行！！"
