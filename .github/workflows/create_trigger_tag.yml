@@ -16,7 +16,6 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Get Latest Tag
-        id: get_latest_tag
         run: |
           git fetch --tags --prune  # リモートリポジトリの最新情報を取得
           git tag --list
