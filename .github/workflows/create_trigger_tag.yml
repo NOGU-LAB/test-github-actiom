@@ -17,10 +17,8 @@ jobs:
       
       - name: Get Latest Tag
         run: |
-          git fetch --tags --prune > /dev/null 2>&1
-          tag_list=$(git tag --list)
-          IFS=$'\n' read -d '' -ra tags <<< "$tag_list"
-          echo "${tags[-1]}"
+          git fetch --unshallow > /dev/null 2>&1
+          git describe --tags --abbrev=0
 
       - name: Build and push excite-emininal-api Amazon ECR
         run: |
