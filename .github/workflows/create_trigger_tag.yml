@@ -24,4 +24,4 @@ jobs:
       
       - name: Get Latest Tag
         run: |
-          echo "${{ steps.get-latest-tag.outputs.value }}""
+          echo "${{ steps.get-latest-tag.outputs.value }}"
