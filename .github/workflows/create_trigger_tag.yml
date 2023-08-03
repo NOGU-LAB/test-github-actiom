@@ -1,0 +1,14 @@
+name: '【auto】Trigger git tag'
+
+on:
+  create:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build and push excite-emininal-api Amazon ECR
+        run: |
+          echo "実行！！"
+          pwd
