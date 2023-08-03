@@ -16,11 +16,12 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Get Latest Tag
+        id: get-latest-tag
         run: |
           git fetch --unshallow > /dev/null 2>&1
-          git describe --tags --abbrev=0
-
-      - name: Build and push excite-emininal-api Amazon ECR
+          TAG=$(git describe --tags --abbrev=0)
+          echo "value=${TAG}" >> $GITHUB_OUTPUT
+      
+      - name: Get Latest Tag
         run: |
-          echo "実行！！"
-          pwd
+          echo "${{ steps.get-latest-tag.outputs.value }}""
