@@ -20,7 +20,7 @@ jobs:
           git fetch --tags --prune > /dev/null 2>&1
           tag_list=$(git tag --list)
           IFS=' ' read -ra tags <<< "$tag_list"
-          echo tags
+          echo $tags
 
       - name: Build and push excite-emininal-api Amazon ECR
         run: |
