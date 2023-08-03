@@ -20,6 +20,13 @@ jobs:
         run: |
           git fetch --tags --prune  # リモートリポジトリの最新情報を取得
           git tag --list
+      
+      - name: 最新のタグを取得
+        id: get_latest_tag
+        run: |
+          latest_tag=$(git describe --abbrev=0 --tags 2>/dev/null || echo "")
+          echo "最新のタグ: $latest_tag"
+          echo "::set-output name=latest_tag::$latest_tag"
         
       - name: Build and push excite-emininal-api Amazon ECR
         run: |
