@@ -18,7 +18,17 @@ jobs:
       - name: Get Latest Tag
         run: |
           git fetch --tags --prune > /dev/null 2>&1
-          git tag --list
+          tag_list=$(git tag --list)
+
+          # タグを改行文字で分割して配列に格納
+          IFS=$'\n' read -rd '' -a tags <<< "$tag_list"
+
+          # 配列から最後のタグを取得
+          last_tag=${tags[-1]}
+
+          # 最後のタグを出力
+          echo "最後のタグ: $last_tag"
+          echo "::set-output name=last_tag::$last_tag"
         
       - name: Build and push excite-emininal-api Amazon ECR
         run: |
