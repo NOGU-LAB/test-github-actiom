@@ -4,6 +4,7 @@ on:
   push:
     tag:
       - v*
+      
 # on:
 #   push:
 #   workflow_run:
